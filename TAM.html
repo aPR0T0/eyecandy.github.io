@@ -1,0 +1,728 @@
+import React, { useState } from 'react';
+import { TrendingUp, Users, DollarSign, Target, Globe, Package, ChevronDown, ChevronUp } from 'lucide-react';
+
+const TAMAnalysis = () => {
+  const [expandedSection, setExpandedSection] = useState('market-overview');
+
+  const toggleSection = (section) => {
+    setExpandedSection(expandedSection === section ? null : section);
+  };
+
+  const Section = ({ id, title, children }) => (
+    <div className="mb-4 border border-gray-200 rounded-lg overflow-hidden">
+      <button
+        onClick={() => toggleSection(id)}
+        className="w-full px-6 py-4 bg-gradient-to-r from-blue-50 to-indigo-50 flex justify-between items-center hover:from-blue-100 hover:to-indigo-100 transition-colors"
+      >
+        <h2 className="text-xl font-bold text-gray-800">{title}</h2>
+        {expandedSection === id ? <ChevronUp /> : <ChevronDown />}
+      </button>
+      {expandedSection === id && (
+        <div className="p-6 bg-white">{children}</div>
+      )}
+    </div>
+  );
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-8">
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 mb-4">
+            Adult Collectibles & Toys
+          </h1>
+          <p className="text-2xl text-gray-600 mb-2">Total Addressable Market Analysis</p>
+          <p className="text-lg text-gray-500">2024-2034 Market Opportunity</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-blue-500">
+            <div className="flex items-center justify-between mb-2">
+              <DollarSign className="text-blue-500" size={32} />
+              <span className="text-sm text-gray-500">2024</span>
+            </div>
+            <div className="text-3xl font-bold text-gray-800">$52B</div>
+            <div className="text-sm text-gray-600">Total Market Size</div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-green-500">
+            <div className="flex items-center justify-between mb-2">
+              <TrendingUp className="text-green-500" size={32} />
+              <span className="text-sm text-gray-500">CAGR</span>
+            </div>
+            <div className="text-3xl font-bold text-gray-800">10.2%</div>
+            <div className="text-sm text-gray-600">2024-2034</div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-purple-500">
+            <div className="flex items-center justify-between mb-2">
+              <Target className="text-purple-500" size={32} />
+              <span className="text-sm text-gray-500">2034</span>
+            </div>
+            <div className="text-3xl font-bold text-gray-800">$135B</div>
+            <div className="text-sm text-gray-600">Projected Market</div>
+          </div>
+          
+          <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-orange-500">
+            <div className="flex items-center justify-between mb-2">
+              <Users className="text-orange-500" size={32} />
+              <span className="text-sm text-gray-500">Adults</span>
+            </div>
+            <div className="text-3xl font-bold text-gray-800">45%</div>
+            <div className="text-sm text-gray-600">of All Toy Sales</div>
+          </div>
+        </div>
+
+        <Section id="market-overview" title="Market Overview & Opportunity">
+          <div className="space-y-6">
+            <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Global Toy & Collectibles Market Breakdown</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <h4 className="font-semibold text-gray-700 mb-3">Total Toy Market</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• 2024: $114.4B to $203.1B by 2034</li>
+                    <li>• CAGR: 6.0% (2025-2034)</li>
+                    <li>• Adult Segment: 17.3% of US toy sales ($6.7B)</li>
+                    <li>• Europe Adult Share: 16% ($2.6B)</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-gray-700 mb-3">Adult Collectibles Specific</h4>
+                  <ul className="space-y-2 text-gray-600">
+                    <li>• 2024 Market Size: $52B</li>
+                    <li>• Core Collectibles: $26.4B to $48.9B by 2034</li>
+                    <li>• Growth Rate: 24.6% CAGR</li>
+                    <li>• Collectibles Share: 18% of overall volumes</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+              <p className="text-gray-700"><strong>Key Insight:</strong> The kidult phenomenon is driving explosive growth - adults now represent nearly half of all collectibles purchases, with nostalgia, stress relief, and investment potential as primary motivators.</p>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="categories" title="Product Categories & Market Sizing">
+          <div className="space-y-6">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead className="bg-gray-100">
+                  <tr>
+                    <th className="p-3 text-left font-semibold text-gray-700 border">Category</th>
+                    <th className="p-3 text-left font-semibold text-gray-700 border">2024 Size</th>
+                    <th className="p-3 text-left font-semibold text-gray-700 border">2034 Projection</th>
+                    <th className="p-3 text-left font-semibold text-gray-700 border">CAGR</th>
+                    <th className="p-3 text-left font-semibold text-gray-700 border">Key Characteristics</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="hover:bg-blue-50">
+                    <td className="p-3 border font-semibold text-gray-800">Static Figurines</td>
+                    <td className="p-3 border">$7.2B</td>
+                    <td className="p-3 border">$15.6B</td>
+                    <td className="p-3 border text-green-600">8.1%</td>
+                    <td className="p-3 border text-sm">Display collectibles, non-articulated, premium materials</td>
+                  </tr>
+                  <tr className="hover:bg-blue-50">
+                    <td className="p-3 border font-semibold text-gray-800">Action Figures (Articulated)</td>
+                    <td className="p-3 border">$7.4B</td>
+                    <td className="p-3 border">$11.15B</td>
+                    <td className="p-3 border text-green-600">4.67%</td>
+                    <td className="p-3 border text-sm">Poseable, 6-12 inch scale, high detail for adults</td>
+                  </tr>
+                  <tr className="hover:bg-blue-50">
+                    <td className="p-3 border font-semibold text-gray-800">Anime Figures</td>
+                    <td className="p-3 border">$4.8B</td>
+                    <td className="p-3 border">$18.6B</td>
+                    <td className="p-3 border text-green-600">9.3%</td>
+                    <td className="p-3 border text-sm">Japanese anime and manga characters, premium quality</td>
+                  </tr>
+                  <tr className="hover:bg-blue-50">
+                    <td className="p-3 border font-semibold text-gray-800">Blind Box and Mystery Toys</td>
+                    <td className="p-3 border">$15.9B</td>
+                    <td className="p-3 border">$38B</td>
+                    <td className="p-3 border text-green-600">10.16%</td>
+                    <td className="p-3 border text-sm">Trendy toys, gacha-style, collectible sets</td>
+                  </tr>
+                  <tr className="hover:bg-blue-50">
+                    <td className="p-3 border font-semibold text-gray-800">Building Sets (Adult)</td>
+                    <td className="p-3 border">$3-4B</td>
+                    <td className="p-3 border">$6-8B</td>
+                    <td className="p-3 border text-green-600">7-8%</td>
+                    <td className="p-3 border text-sm">LEGO 18+, complex builds, display pieces</td>
+                  </tr>
+                  <tr className="hover:bg-blue-50">
+                    <td className="p-3 border font-semibold text-gray-800">Plush Collectibles</td>
+                    <td className="p-3 border">$2-3B</td>
+                    <td className="p-3 border">$4-5B</td>
+                    <td className="p-3 border text-green-600">6-7%</td>
+                    <td className="p-3 border text-sm">Licensed plush, designer toys, adult-oriented</td>
+                  </tr>
+                  <tr className="hover:bg-blue-50">
+                    <td className="p-3 border font-semibold text-gray-800">Trading Cards</td>
+                    <td className="p-3 border">$8-10B</td>
+                    <td className="p-3 border">$15-18B</td>
+                    <td className="p-3 border text-green-600">6-7%</td>
+                    <td className="p-3 border text-sm">Sports, gaming, collectible card games</td>
+                  </tr>
+                  <tr className="bg-blue-100 font-bold">
+                    <td className="p-3 border">TOTAL ADDRESSABLE MARKET</td>
+                    <td className="p-3 border">$52B</td>
+                    <td className="p-3 border">$135B</td>
+                    <td className="p-3 border text-green-700">10.2%</td>
+                    <td className="p-3 border"></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="franchises" title="Top Franchises & IP Revenue">
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-3 text-gray-800">Top Global Franchises (2024)</h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Pokemon</span>
+                    <span className="text-blue-600 font-bold">#1 Globally</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Star Wars</span>
+                    <span className="text-gray-600">Top 5</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Marvel Universe</span>
+                    <span className="text-gray-600">Top 5</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Barbie</span>
+                    <span className="text-gray-600">Top 5</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Hot Wheels</span>
+                    <span className="text-gray-600">Top 5</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-3 text-gray-800">Fastest Growing IPs</h4>
+                <div className="space-y-3">
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">K-pop Merchandise</span>
+                    <span className="text-green-600 font-bold">Explosive Growth</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Anime (Multiple)</span>
+                    <span className="text-green-600 font-bold">+15-20%</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Video Game Characters</span>
+                    <span className="text-green-600 font-bold">+12-15%</span>
+                  </div>
+                  <div className="flex justify-between items-center pb-2 border-b">
+                    <span className="font-semibold">Streaming Originals</span>
+                    <span className="text-green-600">+10-12%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-purple-50 p-5 rounded-lg">
+              <h4 className="font-bold text-lg mb-3 text-gray-800">Key Franchise Revenue Data</h4>
+              <ul className="space-y-2 text-gray-700">
+                <li>• Dragon Ball (Bandai): $930M+ annually from collectibles and toys</li>
+                <li>• Gundam (Bandai): $976M FY2023 (50% from model kits and toys)</li>
+                <li>• LEGO Botanicals: Top gaining property, tapping adult mindfulness trend</li>
+                <li>• Licensed Toys Overall: 34% of total toy market, grew 8% in 2024</li>
+              </ul>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="competitors" title="Major Competitors & Market Share">
+          <div className="space-y-6">
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead className="bg-gradient-to-r from-purple-100 to-blue-100">
+                  <tr>
+                    <th className="p-3 text-left font-semibold text-gray-800 border">Company</th>
+                    <th className="p-3 text-left font-semibold text-gray-800 border">2024 Revenue</th>
+                    <th className="p-3 text-left font-semibold text-gray-800 border">Growth</th>
+                    <th className="p-3 text-left font-semibold text-gray-800 border">Key Strengths</th>
+                    <th className="p-3 text-left font-semibold text-gray-800 border">Market Position</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">Pop Mart</td>
+                    <td className="p-3 border">$1.81B</td>
+                    <td className="p-3 border text-green-600">+107% YoY</td>
+                    <td className="p-3 border text-sm">Blind box leader, Labubu IP ($3B+), 500+ stores globally</td>
+                    <td className="p-3 border text-sm">Dominant in blind box and trendy toys</td>
+                  </tr>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">LEGO</td>
+                    <td className="p-3 border">$9.7B</td>
+                    <td className="p-3 border text-green-600">+13% H1 2024</td>
+                    <td className="p-3 border text-sm">Adult 18+ line, premium sets ($500-850), global brand</td>
+                    <td className="p-3 border text-sm">Leader in building sets, strong adult segment</td>
+                  </tr>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">Funko</td>
+                    <td className="p-3 border">$1.04B</td>
+                    <td className="p-3 border text-orange-500">-4% YoY</td>
+                    <td className="p-3 border text-sm">Pop! figures, 73% evergreen content, massive IP portfolio</td>
+                    <td className="p-3 border text-sm">Mass-market vinyl collectibles leader</td>
+                  </tr>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">Bandai Namco</td>
+                    <td className="p-3 border">$3.4B (T&H)</td>
+                    <td className="p-3 border text-green-600">Stable</td>
+                    <td className="p-3 border text-sm">Gundam, Dragon Ball, anime dominance, 84% of JP plastic model market</td>
+                    <td className="p-3 border text-sm">Leader in anime and Japanese IP collectibles</td>
+                  </tr>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">Good Smile</td>
+                    <td className="p-3 border">Est. $500M+</td>
+                    <td className="p-3 border text-green-600">Growing</td>
+                    <td className="p-3 border text-sm">Nendoroid, Figma, premium anime figures, global distribution</td>
+                    <td className="p-3 border text-sm">Premium anime collectibles specialist</td>
+                  </tr>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">Hasbro</td>
+                    <td className="p-3 border">$2.54B (CP)</td>
+                    <td className="p-3 border text-red-500">-12% YoY</td>
+                    <td className="p-3 border text-sm">Marvel, Star Wars, Transformers, targeting 13+ expansion</td>
+                    <td className="p-3 border text-sm">Traditional toys pivoting to adult collectors</td>
+                  </tr>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">Hot Toys</td>
+                    <td className="p-3 border">Est. $200-300M</td>
+                    <td className="p-3 border text-green-600">Growing</td>
+                    <td className="p-3 border text-sm">Ultra-premium 1/6 scale ($250-500), movie-accurate, limited editions</td>
+                    <td className="p-3 border text-sm">Ultra-premium segment leader</td>
+                  </tr>
+                  <tr className="hover:bg-purple-50">
+                    <td className="p-3 border font-bold text-gray-800">Sideshow</td>
+                    <td className="p-3 border">Est. $100-150M</td>
+                    <td className="p-3 border text-gray-600">Stable</td>
+                    <td className="p-3 border text-sm">Premium statues, 1/6 scale, Hot Toys US distributor</td>
+                    <td className="p-3 border text-sm">Premium statues and exclusives</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                <h4 className="font-bold text-gray-800 mb-2">Fastest Growth</h4>
+                <p className="text-sm text-gray-700">Pop Mart: 107% YoY growth, international expansion 375% in overseas markets</p>
+              </div>
+              <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
+                <h4 className="font-bold text-gray-800 mb-2">Most Stable</h4>
+                <p className="text-sm text-gray-700">LEGO: Consistent growth, diversified portfolio, strong adult segment (30-40% of sales)</p>
+              </div>
+              <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
+                <h4 className="font-bold text-gray-800 mb-2">Premium Leader</h4>
+                <p className="text-sm text-gray-700">Hot Toys: Ultra-premium pricing ($250-500), approx 30 new limited releases annually</p>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="regional" title="Regional Market Breakdown">
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-4 text-gray-800">North America</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Market Share:</span>
+                    <span className="font-bold text-blue-600">35%</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">2024 Size:</span>
+                    <span className="font-bold">$18.2B</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Adult Collectors:</span>
+                    <span className="font-bold">42%</span>
+                  </div>
+                  <ul className="text-sm text-gray-600 mt-3 space-y-1">
+                    <li>• US: 38% of adults actively collecting</li>
+                    <li>• 33% online purchase preference</li>
+                    <li>• Strong limited-edition focus (29%)</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-4 text-gray-800">Asia-Pacific</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Market Share:</span>
+                    <span className="font-bold text-blue-600">45%</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">2024 Size:</span>
+                    <span className="font-bold">$23.4B</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Growth Rate:</span>
+                    <span className="font-bold text-green-600">7.2% CAGR</span>
+                  </div>
+                  <ul className="text-sm text-gray-600 mt-3 space-y-1">
+                    <li>• Japan: 53% of anime figure market</li>
+                    <li>• China: Fastest growing trendy toys</li>
+                    <li>• SE Asia: Pop Mart +619% growth</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-4 text-gray-800">Europe</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Market Share:</span>
+                    <span className="font-bold text-blue-600">15%</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">2024 Size:</span>
+                    <span className="font-bold">$7.8B</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Adult Share:</span>
+                    <span className="font-bold">16% ($2.6B)</span>
+                  </div>
+                  <ul className="text-sm text-gray-600 mt-3 space-y-1">
+                    <li>• UK, Germany, France lead</li>
+                    <li>• Strong convention culture</li>
+                    <li>• Craftsmanship valued highly</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-4 text-gray-800">Rest of World</h4>
+                <div className="space-y-2">
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Market Share:</span>
+                    <span className="font-bold text-blue-600">5%</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">2024 Size:</span>
+                    <span className="font-bold">$2.6B</span>
+                  </div>
+                  <div className="flex justify-between pb-2 border-b">
+                    <span className="text-gray-700">Fastest Growth:</span>
+                    <span className="font-bold text-green-600">India</span>
+                  </div>
+                  <ul className="text-sm text-gray-600 mt-3 space-y-1">
+                    <li>• Latin America: Growing middle class</li>
+                    <li>• Middle East: Emerging market</li>
+                    <li>• India: Highest CAGR potential</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="trends" title="Key Market Trends & Drivers">
+          <div className="space-y-4">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-5 rounded-lg border-l-4 border-green-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">1. Kidult Phenomenon</h4>
+              <p className="text-gray-700 mb-2">Adults (18+) driving 40-45% of toy purchases, with nostalgia as primary motivator</p>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• US: 17.3% of toy sales from adults ($6.7B), +8% YoY</li>
+                <li>• 60% of Hasbro audience is 13+</li>
+                <li>• Emotional connection drives premium purchases</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-5 rounded-lg border-l-4 border-blue-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">2. Blind Box Revolution</h4>
+              <p className="text-gray-700 mb-2">Mystery toys creating addictive collecting patterns, led by Asian innovation</p>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• Pop Mart: $1.81B revenue, 107% growth</li>
+                <li>• Blind box segment: $15.9B to $38B by 2034</li>
+                <li>• Gacha mechanics driving repeat purchases</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-5 rounded-lg border-l-4 border-purple-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">3. Premium and Investment Collecting</h4>
+              <p className="text-gray-700 mb-2">Collectors willing to pay premium prices for limited editions and rare pieces</p>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• Hot Toys figures: $250-500 per unit</li>
+                <li>• LEGO premium sets: $500-850</li>
+                <li>• 29% of US collectors focus on limited editions</li>
+                <li>• Secondary market thriving on platforms like eBay, StockX</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-r from-orange-50 to-red-50 p-5 rounded-lg border-l-4 border-orange-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">4. Digital Integration</h4>
+              <p className="text-gray-700 mb-2">E-commerce and digital experiences transforming how adults discover and buy collectibles</p>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• 33% of US collectors prefer online purchases</li>
+                <li>• Social media driving discovery and community</li>
+                <li>• Virtual unboxing content creating FOMO</li>
+                <li>• AR try-before-you-buy emerging</li>
+              </ul>
+            </div>
+
+            <div className="bg-gradient-to-r from-yellow-50 to-amber-50 p-5 rounded-lg border-l-4 border-yellow-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">5. Wellness and Stress Relief</h4>
+              <p className="text-gray-700 mb-2">Adult toys positioned as wellness products for mental health and relaxation</p>
+              <ul className="text-sm text-gray-600 space-y-1">
+                <li>• LEGO marketing builds as mindfulness activity</li>
+                <li>• Plush collectibles for emotional support</li>
+                <li>• Building sets as screen-free activities</li>
+                <li>• Display collecting as home decoration</li>
+              </ul>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="distribution" title="Distribution Channels & Go-to-Market">
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-3 text-gray-800">Online Direct (35%)</h4>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Brand websites and apps</li>
+                  <li>• Subscription boxes</li>
+                  <li>• Social commerce (Instagram, TikTok)</li>
+                  <li>• Virtual vending machines</li>
+                </ul>
+                <div className="mt-3 p-2 bg-green-50 rounded text-xs text-gray-700">
+                  <strong>Growth:</strong> Fastest growing channel, +15% YoY
+                </div>
+              </div>
+
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-3 text-gray-800">Specialty Retail (30%)</h4>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Pop Mart stores (500+ globally)</li>
+                  <li>• Hobby shops and comic stores</li>
+                  <li>• Anime specialty retailers</li>
+                  <li>• Convention exclusives</li>
+                </ul>
+                <div className="mt-3 p-2 bg-blue-50 rounded text-xs text-gray-700">
+                  <strong>Strength:</strong> Experience-driven, community building
+                </div>
+              </div>
+
+              <div className="bg-white border rounded-lg p-5 shadow-sm">
+                <h4 className="font-bold text-lg mb-3 text-gray-800">Mass Market (25%)</h4>
+                <ul className="text-sm text-gray-600 space-y-2">
+                  <li>• Amazon, Target, Walmart</li>
+                  <li>• Toy chains (Toys R Us Asia)</li>
+                  <li>• Department stores</li>
+                  <li>• Big box retailers</li>
+                </ul>
+                <div className="mt-3 p-2 bg-orange-50 rounded text-xs text-gray-700">
+                  <strong>Volume:</strong> Largest volume, lower margins
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-indigo-50 p-5 rounded-lg">
+              <h4 className="font-bold text-lg mb-3 text-gray-800">Emerging Channels</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <h5 className="font-semibold text-gray-700 mb-2">Physical Innovation</h5>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Vending machines in malls and airports</li>
+                    <li>• Pop-up stores in high-traffic areas</li>
+                    <li>• Experiential flagship stores</li>
+                    <li>• Collaborations with cafes and lifestyle stores</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 className="font-semibold text-gray-700 mb-2">Digital Innovation</h5>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Live shopping streams</li>
+                    <li>• NFT-physical hybrid drops</li>
+                    <li>• Metaverse stores</li>
+                    <li>• Community-driven marketplaces</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="investment" title="Investment Thesis & Opportunity">
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="bg-gradient-to-br from-green-50 to-emerald-100 p-6 rounded-lg border-2 border-green-300">
+                <h4 className="font-bold text-xl mb-4 text-gray-800">Why This Market?</h4>
+                <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-2">✓</span>
+                    <span><strong>$52B to $135B</strong> - 10.2% CAGR over next decade</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-2">✓</span>
+                    <span><strong>Counter-cyclical:</strong> Collectors buy during good and bad times</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-2">✓</span>
+                    <span><strong>Recurring revenue:</strong> Series-based collecting drives repeat purchases</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-2">✓</span>
+                    <span><strong>High margins:</strong> Premium products command 50-70% gross margins</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-green-600 font-bold mr-2">✓</span>
+                    <span><strong>Demographic tailwind:</strong> Millennials and Gen Z driving growth</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-100 p-6 rounded-lg border-2 border-blue-300">
+                <h4 className="font-bold text-xl mb-4 text-gray-800">Market Gaps & White Space</h4>
+                <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-blue-600 font-bold mr-2">→</span>
+                    <span><strong>Regional IPs:</strong> Local content not yet fully monetized</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 font-bold mr-2">→</span>
+                    <span><strong>Mid-premium segment:</strong> Gap between Funko ($15) and Hot Toys ($400)</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 font-bold mr-2">→</span>
+                    <span><strong>Customization:</strong> Limited personalization options at scale</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 font-bold mr-2">→</span>
+                    <span><strong>Sustainable materials:</strong> Eco-conscious collectors underserved</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-blue-600 font-bold mr-2">→</span>
+                    <span><strong>Women-led IPs:</strong> Growing but still minority representation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-100 to-pink-100 p-6 rounded-lg border-2 border-purple-300">
+              <h4 className="font-bold text-xl mb-4 text-gray-800">Key Success Factors for New Entrants</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                  <h5 className="font-semibold text-purple-800 mb-2">IP Strategy</h5>
+                  <ul className="text-sm text-gray-700 space-y-1">
+                    <li>• Own original IP or secure exclusive licenses</li>
+                    <li>• Focus on underserved fandoms</li>
+                    <li>• Build community before product</li>
+                    <li>• Limited releases create scarcity</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 className="font-semibold text-purple-800 mb-2">Distribution</h5>
+                  <ul className="text-sm text-gray-700 space-y-1">
+                    <li>• DTC-first to control margins</li>
+                    <li>• Strategic retail partnerships</li>
+                    <li>• Strong social media presence</li>
+                    <li>• Influencer collaborations</li>
+                  </ul>
+                </div>
+                <div>
+                  <h5 className="font-semibold text-purple-800 mb-2">Product</h5>
+                  <ul className="text-sm text-gray-700 space-y-1">
+                    <li>• Quality craftsmanship essential</li>
+                    <li>• Clear collecting tiers</li>
+                    <li>• Chase variants drive excitement</li>
+                    <li>• Display-worthy packaging</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-yellow-50 border-l-4 border-yellow-500 p-5 rounded">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">Comparable Exits & Valuations</h4>
+              <ul className="space-y-2 text-gray-700">
+                <li>• <strong>Pop Mart IPO (2020):</strong> $6.8B valuation, currently $12B+ market cap</li>
+                <li>• <strong>Funko IPO (2017):</strong> $1.3B valuation (now $800M after corrections)</li>
+                <li>• <strong>Typical SaaS multiples:</strong> 6-10x revenue; Pop Mart trading at 8-9x revenue</li>
+                <li>• <strong>Strategic acquisitions:</strong> Hasbro acquiring eOne ($4B), Mattel buying HIT ($680M)</li>
+              </ul>
+            </div>
+          </div>
+        </Section>
+
+        <Section id="risks" title="Market Risks & Considerations">
+          <div className="space-y-4">
+            <div className="bg-red-50 p-5 rounded-lg border-l-4 border-red-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">1. IP and Licensing Risks</h4>
+              <p className="text-gray-700 text-sm">Dependence on third-party IP creates vulnerability. License renewals can be expensive or lost to competitors. Building owned IP takes time and has high failure rate.</p>
+            </div>
+
+            <div className="bg-orange-50 p-5 rounded-lg border-l-4 border-orange-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">2. Market Saturation</h4>
+              <p className="text-gray-700 text-sm">Collectors have limited budgets and shelf space. Too many releases can lead to fatigue. Competition intense across price points. Funko decline (-4% YoY) shows saturation risk.</p>
+            </div>
+
+            <div className="bg-yellow-50 p-5 rounded-lg border-l-4 border-yellow-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">3. Trend Dependency</h4>
+              <p className="text-gray-700 text-sm">Consumer preferences change quickly. What is hot today may be irrelevant tomorrow. Requires constant innovation and fresh IP. Blind box trend may not sustain 107% growth rates.</p>
+            </div>
+
+            <div className="bg-purple-50 p-5 rounded-lg border-l-4 border-purple-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">4. Manufacturing and Supply Chain</h4>
+              <p className="text-gray-700 text-sm">Most production concentrated in China. Quality control critical for premium products. Supply chain disruptions can delay launches. Counterfeits erode brand value.</p>
+            </div>
+
+            <div className="bg-blue-50 p-5 rounded-lg border-l-4 border-blue-500">
+              <h4 className="font-bold text-lg mb-2 text-gray-800">5. Economic Sensitivity</h4>
+              <p className="text-gray-700 text-sm">While collectibles show resilience, discretionary spending can decline in recessions. Premium segment ($100+) more vulnerable than mass market. Unemployment impacts collector community spending power.</p>
+            </div>
+          </div>
+        </Section>
+
+        <div className="mt-12 bg-gradient-to-r from-blue-600 to-indigo-600 text-white p-8 rounded-xl shadow-2xl">
+          <h3 className="text-3xl font-bold mb-4 text-center">Executive Summary</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
+            <div>
+              <h4 className="font-bold text-lg mb-2">Market Opportunity</h4>
+              <ul className="space-y-1">
+                <li>• $52B market growing to $135B by 2034</li>
+                <li>• 10.2% CAGR driven by kidult phenomenon</li>
+                <li>• Blind box segment leading growth at 10.16% CAGR</li>
+                <li>• Asia-Pacific largest region at 45% market share</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-2">Competitive Landscape</h4>
+              <ul className="space-y-1">
+                <li>• Pop Mart dominant in trendy toys (107% growth)</li>
+                <li>• LEGO leading premium building sets</li>
+                <li>• Bandai Namco owns anime and Japanese IP</li>
+                <li>• White space in mid-premium segment</li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-6 text-center">
+            <p className="text-lg font-semibold">The adult collectibles market represents a compelling VC opportunity with strong growth fundamentals, proven business models, and multiple successful exits.</p>
+          </div>
+        </div>
+
+        <div className="mt-8 text-center text-gray-500 text-sm">
+          <p>Data compiled from market research reports, company financials, and industry analysis (2024-2025)</p>
+          <p className="mt-2">Sources: Pop Mart filings, LEGO reports, Funko 10-K, Bandai Namco earnings, industry research firms</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default TAMAnalysis;
